@@ -1,27 +1,19 @@
 import { View } from "react-native";
 import React from "react";
-import Login from "../screens/UserAuthentication.tsx/Login";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ForgotPassword from "../screens/UserAuthentication.tsx/ForgotPassword";
-import UpdatePassword from "../screens/UserAuthentication.tsx/UpdatePassword";
-import DashboardStack from "./DashboardStack";
 import { useOnboarding } from "@src/context/onboarding";
+import OnboardScreen from "@src/screens/Authentication.tsx/OnboardScreen";
+import SignUp from "@src/screens/Authentication.tsx/SignUp";
+import { AuthenticationStackParamList } from "@src/utils/Types";
+import GetVerificationCode from "@src/screens/Authentication.tsx/GetVerificationCode";
+import DashboardStack from "./DashboardStack";
 
-export type AuthenticationStackParamList = {
-  login: any;
-  forgotpassword: any;
-  updatepassword: any;
-  // verify: any;
-};
+
+
+
 
 const Stack = createNativeStackNavigator<AuthenticationStackParamList>();
 const UserAuthentication = () => {
-  const context = useOnboarding()!;
-  const { login } = context;
-
-  if (login) {
-    return <DashboardStack />;
-  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -30,10 +22,12 @@ const UserAuthentication = () => {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="login" component={Login} />
-        {/* <Stack.Screen name='verify' component={VerifyEmail}/> */}
-        <Stack.Screen name="forgotpassword" component={ForgotPassword} />
-        <Stack.Screen name="updatepassword" component={UpdatePassword} />
+        {/* <Stack.Screen name="login" component={Login} /> */}
+        <Stack.Screen name='onboarding' component={OnboardScreen}/>
+        <Stack.Screen name="signup" component={SignUp} />
+        <Stack.Screen name="getVerificationCode" component={GetVerificationCode} />
+        <Stack.Screen name="dasboard" component={DashboardStack} />
+        {/* <Stack.Screen name="verify" component={Login} /> */}
       </Stack.Navigator>
     </View>
   );

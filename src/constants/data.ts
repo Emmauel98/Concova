@@ -111,18 +111,7 @@ export const quickLinksArray: QuicklinkProps[] = [
   },
 ];
 
-export const recentChatArray: RecentChatProps[] = [
-  {
-    image: images.user.propertyManager,
-    name: "Property Manager",
-    itemSent: "sent a document",
-  },
-  {
-    image: images.user.cso,
-    name: "CSO",
-    itemSent: "sent an image",
-  },
-];
+
 
 export const recentActivityArray: RecentActivityProps[] = [
   {
@@ -151,37 +140,7 @@ export const recentActivityArray: RecentActivityProps[] = [
   },
 ];
 
-export const UserChats: ChatProps[] = [
-  {
-    name: "User1",
-    image: images.user.propertyManager,
-    message: "Sent a document",
-    time: "1hr",
-    messageCount: "1",
-  },
-  {
-    name: "User2",
-    image: images.user.cso,
-    message:
-      "A very long message from user2. lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis officiis aliquam adipisci tempore hic obcaecati laboriosam, eveniet corporis. Ratione quam dolores voluptate beatae nam! Esse sit quidem distinctio sint. Vero.",
-    time: "1hr",
-  },
-];
 
-export const UserComplaints: ComplaintProps[] = [
-  {
-    name: "Leak in the kitchen",
-    image: images.user.complaint,
-    time: "1hr",
-    state: "PENDING",
-  },
-  {
-    name: "Leak in the kitchen2",
-    image: images.user.complaint,
-    time: "1hr",
-    state: "CLOSED",
-  },
-];
 
 export const HousingBills: QuicklinkProps[] = [
   {

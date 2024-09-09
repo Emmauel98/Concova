@@ -3,79 +3,80 @@ import React, { useState } from "react";
 import useOnboardingContext from "@src/utils/Context";
 import AuthInputs from "@src/utils/AuthInputValues";
 import images from "@src/constants/images";
+import { renderIcon } from "../common/renderIcon";
 
 
 
-export const EmailInput = ({action}:{ action: string}) => {
 
-
-  const inputValue = AuthInputs();
-
-  const setEmailValue = (value : string)=>{
-    if (action === 'setLoginEmail') {
-      const newLoginDetails = {...inputValue.loginDetails, email: value};
-      inputValue.setLoginDetails(newLoginDetails);
-    }else if(action === 'changePassword'){
-      const NewChangePasswordDetails = {...inputValue.changePasswordDetails,email: value};
-      inputValue.setChangePasswordDetails(NewChangePasswordDetails);
-    }else if(action === 'resetpassword'){
-      const NewRestPasswordDetails = {...inputValue.resetPassword, email: value};
-      console.log(NewRestPasswordDetails)
-      inputValue.setResetPassword(NewRestPasswordDetails);
-    }
-   };
+export const EmailInput = () => {
  
   return (
-    <View className="mb-3">
+    <View className="mb-3 relative">
       <TextInput
-        placeholder="Email"
-        placeholderTextColor={"black"}
+        placeholder="Enter Your Email"
+        placeholderTextColor={"#C2C3CB"}
         inputMode="email"
         enterKeyHint="enter"
         autoComplete="email"
-        className=" border-2 border-[#52514E4D] mx-[5vw] h-[43px] px-[5vw]
-       rounded-lg
+        cursorColor={'white'}
+        selectionColor={'white'}
+        className="mx-[5vw] h-[7vh] rounded-2xl bg-[#23262770] py-[1.7vh]
+        text-[14px] font-normal pl-[15vw] text-white 
       "
-      onChangeText={(value)=>setEmailValue(value)}
       />
+      <View className="absolute top-[2vh] left-[10vw]">
+          {renderIcon('mail', 'AntDesign', 24, '#ffff' )}
+      </View>
+    </View>
+  );
+};
+export const NameInput = () => {
+ 
+  return (
+    <View className="mb-3 relative">
+      <TextInput
+        placeholder="Enter Your Email"
+        placeholderTextColor={"#C2C3CB"}
+        inputMode="text"
+        enterKeyHint="enter"
+        autoComplete="given-name"
+        cursorColor={'white'}
+        selectionColor={'white'}
+        className="mx-[5vw] h-[7vh] rounded-2xl bg-[#23262770] py-[1.7vh]
+        text-[14px] font-normal pl-[15vw] text-white 
+      "
+      />
+      <View className="absolute top-[2vh] left-[10vw]">
+          {renderIcon('user', 'AntDesign', 24, '#ffff' )}
+      </View>
     </View>
   );
 };
 
 
-export const PasswordInput = ({action}:{ action: string}) => {
+export const PasswordInput = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const changeVisibilty = () => {
     setShowPassword((prev) => !showPassword);
   };
-  const inputValue = AuthInputs();
-
-  const {setLoginDetails , loginDetails} = useOnboardingContext();
-
-   const setPasswordValue = (value : string)=>{
-    if (action === 'setLoginEmail') {
-      const newLoginDetails = {...loginDetails, password: value};
-      setLoginDetails(newLoginDetails);
-    }else if(action === 'resetpassword'){
-      const NewRestPasswordDetails = {...inputValue.resetPassword, newPassword: value};
-      console.log(NewRestPasswordDetails)
-      inputValue.setResetPassword(NewRestPasswordDetails);
-    }
-   };
+ 
 
   return (
     <View className=" relative">
       <TextInput
         placeholder="Password"
-        placeholderTextColor={"black"}
+        placeholderTextColor={"#C2C3CB"}
         secureTextEntry={showPassword}
         autoComplete="password"
         inlineImageLeft="eyeOpen"
-        className=" border-2 border-[#52514E4D] mx-[5vw] h-[43px] px-[5vw]
-        rounded-lg
+        className="mx-[5vw] h-[7vh] rounded-2xl bg-[#23262770] py-[1.7vh]
+        text-[14px] font-normal pl-[15vw] text-white
       "
-      onChangeText={(value)=>setPasswordValue(value)}
+      // onChangeText={(value)=>setPasswordValue(value)}
       />
+      <View className="absolute top-[2vh] left-[10vw]">
+          {renderIcon('lock', 'AntDesign', 24, '#ffff' )}
+      </View>
       {showPassword ? (
         <TouchableOpacity className="absolute top-[1.5vh] right-[10vw]"
         onPress={changeVisibilty}
@@ -83,7 +84,6 @@ export const PasswordInput = ({action}:{ action: string}) => {
           <Image
             source={images.onboarding.eyeOpen}
             className=" w-[3vh] h-[3vh]"
-            // onProgress={changeVisibilty}
           />
         </TouchableOpacity>
       ) : (
@@ -93,10 +93,33 @@ export const PasswordInput = ({action}:{ action: string}) => {
         <Image
           source={images.onboarding.eyeClosed}
           className=" w-[3vh] h-[3vh]"
-        //   onProgress={changeVisibilty}
         />
         </TouchableOpacity>
       )}
+    </View>
+  );
+};
+
+
+export const PhoneNumberInput = () => {
+ 
+  return (
+    <View className="mb-3 relative">
+      <TextInput
+        placeholder="Phone Number"
+        placeholderTextColor={"#C2C3CB"}
+        inputMode="text"
+        enterKeyHint="send"
+        autoComplete="tel"
+        cursorColor={'white'}
+        selectionColor={'white'}
+        className="mx-[5vw] h-[7vh] rounded-2xl bg-[#23262770] py-[1.7vh]
+        text-[14px] font-normal pl-[15vw] text-white 
+      "
+      />
+      <View className="absolute top-[2vh] left-[10vw] rotate-[90deg]">
+          {renderIcon('phone', 'AntDesign', 24, '#ffff' )}
+      </View>
     </View>
   );
 };

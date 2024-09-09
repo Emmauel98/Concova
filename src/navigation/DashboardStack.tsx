@@ -1,277 +1,176 @@
 import React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
-} from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons, Entypo, Octicons, FontAwesome } from "@expo/vector-icons";
-import { Host } from "react-native-portalize";
-import { appColors } from "../constants/colors";
-
-import {
-  CancelEdit,
-  GoToEditScreen,
-  SaveEditedChanges,
-  UserImage,
-} from "@src/components/account/utils";
-import Home from "@src/screens/home";
-import Bills from "../screens/bills";
-import Messages from "../screens/message";
-import Profile from "../screens/profile";
-import Emergency from "../screens/emergency";
-import GateAccess from "../screens/gateAccess";
-// import HouseBill from "@src/screens/bills/HouseBill";
-import PaymentHistory from "@src/screens/bills/PaymentHistory";
-import UserManagement from "@src/screens/userManagement";
-import Account from "@src/screens/account";
-import Settings from "@src/screens/settings";
-import EditProfile from "@src/components/account/editProfile";
-import NotificationsPreferences from "@src/components/settings/notifications";
-import Communication from "@src/components/settings/communication";
-import Security from "@src/components/settings/security";
-import AppPreference from "@src/components/settings/appPreference";
-import Support from "@src/components/settings/support";
-import NewRequest from "@src/screens/NewRequest";
+import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
 import { renderIcon } from "@src/components/common/renderIcon";
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import images from "@src/constants/images";
+
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
-export type BillsStackParamList = {
-  HouseBill: any;
-  PaymentHistory: any;
-};
+// Dummy Screens
+const HomeScreen = () => (
+  <View>
+    <Text>Home</Text>
+  </View>
+);
+const FinanceScreen = () => (
+  <View>
+    <Text>Finance</Text>
+  </View>
+);
+const CardsScreen = () => (
+  <View>
+    <Text>Cards</Text>
+  </View>
+);
+const MoreScreen = () => (
+  <View>
+    <Text>More</Text>
+  </View>
+);
 
-export type NewRequestStackParamList = {
-  newrequest: any;
-};
+// Custom Tab Bar Component
+const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navigation })=> {
 
-const CustomTabIcon = ({
-  children,
-  active,
-}: {
-  active: boolean;
-  children: React.ReactNode;
-}) => {
+    const iconNames = ['home', 'dollar-sign', '' , 'credit-card', 'grid' ]
   return (
-    <View
-      style={[
-        styles.iconContainer,
-        { backgroundColor: active ? appColors.orange : appColors.white },
-      ]}
-    >
-      {children}
+    <View className=" bg-[#00000000] h-[13vh] flex-row justify-between  items-center">
+      <ImageBackground 
+      source={images.home.background}
+        className=" flex-row justify-around 
+        py-[3vh] mx-[4vh] rounded-xl w-[85vw]"
+        >
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+              ? options.title
+              : route.name;
+
+          const isFocused = state.index === index;
+          const color = isFocused ? '#FAC153' : '#fff';
+          const iconProvider = route.name === 'Transactions' ? 'Entypo' : 'Feather';
+          const iconName = iconNames[index ];
+
+          console.log(iconName, iconProvider)
+
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
+
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          return (
+            <TouchableOpacity
+              key={index}
+              accessibilityRole="button"
+              accessibilityState={isFocused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+            className="px-[10vw]"
+            >
+              {route.name === "Center" ? (
+                <View 
+                className=" w-[18.3vw] h-[8.5vh] justify-center items-center absolute 
+                top-[-4.5vh]"
+                >
+                  <Image
+                    source={images.home.fancylogo}
+                    className=" w-full h-full relative top-[-4vh] left-[1vw]"
+                  />
+                </View>
+              ) : (
+                <View>{renderIcon(iconName, iconProvider, 28, color)}</View>
+              )}
+            </TouchableOpacity>
+          );
+        })}
+      </ImageBackground>
     </View>
   );
-};
-
-const TabNavigation = () => {
-  return (
-    <Host>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: appColors.white,
-          tabBarLabel: () => null,
-          tabBarStyle: styles.tabBarStyles,
-          headerTitleAlign: "center",
-        }}
-      >
-        <Tab.Screen
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ size, color, focused }) => (
-              <CustomTabIcon active={focused}>
-                <Entypo name="home" size={size} color={color} />
-              </CustomTabIcon>
-            ),
-          }}
-          name="Home"
-          component={Home}
-        />
-        <Tab.Screen
-          options={{
-            tabBarIcon: ({ size, color, focused }) => (
-              <CustomTabIcon active={focused}>
-                <Octicons name="credit-card" size={size} color={color} />
-              </CustomTabIcon>
-            ),
-            headerTitleAlign: "center",
-          }}
-          name="Bills"
-          component={Bills}
-        />
-        <Tab.Screen
-          options={{
-            tabBarIcon: ({ size, color, focused }) => (
-              <CustomTabIcon active={focused}>
-                <Ionicons
-                  name="chatbubble-ellipses"
-                  size={size}
-                  color={color}
-                />
-              </CustomTabIcon>
-            ),
-          }}
-          name="Message"
-          component={Messages}
-        />
-        <Tab.Screen
-          options={{
-            tabBarIcon: ({ size, color, focused }) => (
-              <CustomTabIcon active={focused}>
-                <FontAwesome name="user" size={size} color={color} />
-              </CustomTabIcon>
-            ),
-          }}
-          name="Profile"
-          component={Profile}
-        />
-      </Tab.Navigator>
-    </Host>
-  );
-};
+}
 
 const DashboardStack = () => {
-  const { height } = useWindowDimensions();
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Main"
-        component={TabNavigation}
-        options={{ headerShown: false, title: "" }}
+    <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ tabBarLabel: "home" }}
       />
-
-      <Stack.Group screenOptions={{ headerTitleAlign: "center" }}>
-        <Stack.Screen
-          name="Emergency"
-          component={Emergency}
-          options={{ title: "Emergency", headerTitleAlign: "center" }}
-        />
-        <Stack.Screen
-          name="GateAccess"
-          component={GateAccess}
-          options={{
-            title: "Gate Access",
-            headerTitleAlign: "center",
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => alert("I can do All things through christ")} // Should be removed or edited. 
-                style={{ marginRight: 15 }}
-              >
-                {renderIcon(
-                  "filter-variant",
-                  "MaterialCommunityIcons",
-                  28,
-                  appColors.black
-                )}
-              </TouchableOpacity>
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="newrequest"
-          component={NewRequest}
-          options={{ title: "New Request", headerTitleAlign: "center" }}
-        />
-        {/* <Stack.Screen
-          name="HouseBill"
-          component={HouseBill}
-          options={{ title: "Housing  bills", headerTitleAlign: 'center' }}
-        /> */}
-        <Stack.Screen
-          name="PaymentHistory"
-          component={PaymentHistory}
-          options={{ title: "Payment History" }}
-        />
-
-        <Stack.Group>
-          <Stack.Screen
-            name="Account"
-            component={Account}
-            options={{
-              headerStyle: { height: height * 0.15 },
-              headerTitle: () => <UserImage />,
-              headerRight: () => <GoToEditScreen />,
-            }}
-          />
-          <Stack.Screen
-            name="EditProfile"
-            component={EditProfile}
-            options={{
-              title: "Edit Profile",
-              headerLeft: () => <CancelEdit />,
-              headerRight: () => <SaveEditedChanges />,
-            }}
-          />
-        </Stack.Group>
-
-        <Stack.Screen
-          name="UserManagement"
-          component={UserManagement}
-          options={{ title: "UserManagement" }}
-        />
-
-        <Stack.Group>
-          <Stack.Screen
-            name="Settings"
-            component={Settings}
-            options={{ title: "Settings" }}
-          />
-          <Stack.Screen
-            name="Notifications"
-            component={NotificationsPreferences}
-            options={{ title: "Notifications Preferences" }}
-          />
-          <Stack.Screen
-            name="Communication"
-            component={Communication}
-            options={{ title: "Communication Preferences" }}
-          />
-          <Stack.Screen
-            name="Security"
-            component={Security}
-            options={{ title: "Password & Security" }}
-          />
-          <Stack.Screen
-            name="AppPreferences"
-            component={AppPreference}
-            options={{ title: "App Preferences" }}
-          />
-          <Stack.Screen
-            name="Support"
-            component={Support}
-            options={{ title: "Help & Support" }}
-          />
-        </Stack.Group>
-      </Stack.Group>
-    </Stack.Navigator>
+      <Tab.Screen
+        name="Assets"
+        component={FinanceScreen}
+        options={{ tabBarLabel: "usd" }}
+      />
+      <Tab.Screen
+        name="Center"
+        component={HomeScreen}
+        options={{ tabBarLabel: "center" }}
+      />
+      <Tab.Screen
+        name="Transactions"
+        component={CardsScreen}
+        options={{ tabBarLabel: "credit-card" }}
+      />
+      <Tab.Screen
+        name="More"
+        component={MoreScreen}
+        options={{ tabBarLabel: "th-large" }}
+      />
+    </Tab.Navigator>
   );
 };
 
+export default DashboardStack;
+
 const styles = StyleSheet.create({
-  tabBarStyles: {
-    height: 100,
+  tabBarContainer: {
+    backgroundColor: "#000",
     paddingBottom: 10,
-    backgroundColor: appColors.white,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    paddingTop: 10,
     position: "absolute",
-    left: 0,
-    right: 0,
     bottom: 0,
-    borderTopWidth: 0,
+    width: "100%",
+    height: 70,
   },
-  iconContainer: {
-    width: 50,
-    height: 50,
-    backgroundColor: appColors.orange,
-    borderRadius: 50,
-    padding: 12,
+  tabBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#3e3e3e",
+    padding: 10,
+    borderRadius: 20,
+    marginHorizontal: 10,
+  },
+  tabButton: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  centerButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: "#F6411B",
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
+    top: -25, // Move the button upwards
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  centerIcon: {
+    width: 40,
+    height: 40,
   },
 });
-export default DashboardStack;

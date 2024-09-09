@@ -2,53 +2,39 @@ import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { AuthenticationStackParamList } from "@src/navigation";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import useOnboardingContext from "@src/utils/Context";
-import axios from "axios";
+import { AuthenticationStackParamList } from "@src/utils/Types";
 import Toast from "react-native-toast-message";
-import { BaseUrl } from "@src/utils/Base_url";
-import { LoginUser } from "@src/utils/APIRoutes";
-import { getCurrentUser } from "@src/api/user";
+import useOnboardingContext from "@src/utils/Context";
 
-const LoginButton = () => {
+
+
+const LoginButton = ({name}:{name: string}) => {
   const navigation =
     useNavigation<StackNavigationProp<AuthenticationStackParamList>>();
-  const [updatePasswordStatus, setUpdatePasswordStatus] =
-    useState<keyof AuthenticationStackParamList>("updatepassword");
 
   const [loading, setLoading] = useState(false);
-  const { loginDetails, setCurrentUser, setLogin } = useOnboardingContext();
 
-  const getData = async () => await AsyncStorage.getItem("");
+  const {verify, setVerify} = useOnboardingContext();
+
 
   const clickBtn = async () => {
     try {
       setLoading(true);
-      if (!loginDetails.email && !loginDetails.password) {
-        return console.log("Show error screen");
-      }
-      const url = `${BaseUrl}${LoginUser}`;
-      const payload = loginDetails;
-      console.log(payload)
-      const response = await axios.post(url, payload);
-      await AsyncStorage.setItem(
-        "accessToken",
-        response.data?.data?.accessToken
-      );
-      const validateLogin = response.data?.data?.firstLogin;
-      const currentUser = await getCurrentUser();
-      setCurrentUser(currentUser);
-      if (validateLogin) {
+      setTimeout(()=>{
+        switch (name) {
+          case 'Register':
+            navigation.navigate('getVerificationCode');
+            break;
+          case 'Continue':
+            setVerify(true);
+            break;
+        
+          default:
+            break;
+        };
         setLoading(false);
-        navigation.navigate("updatepassword");
-      } else {
-        setLoading(false);
-        setLogin(true);
-      }
-      // console.log(response.data.data.firstLogin);
+      },1000)
     } catch (error: any) {
-      console.log("Error", error.response);
       setLoading(false);
       Toast.show({
         type: "error",
@@ -60,10 +46,10 @@ const LoginButton = () => {
 
 
   return (
-    <View className=" mx-5 bg-[#F6411B] h-[50px] rounded-lg">
+    <View className=" mx-5 bg-[#EDAF39] h-[7vh] rounded-3xl mt-[2vh]">
       <TouchableOpacity onPress={clickBtn} disabled={loading}>
-        <View className="bg-[#F6411B] h-full flex-row justify-center items-center rounded-lg">
-          <Text className=" font-semibold text-center text-white">Sign in</Text>
+        <View className="bg-[#EDAF39] h-full flex-row justify-center items-center rounded-3xl">
+          <Text className=" font-normal text-center text-black text-[20px]">{name}</Text>
           {loading && (
             <ActivityIndicator
               size="small"
