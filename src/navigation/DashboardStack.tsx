@@ -4,16 +4,12 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from
 import { renderIcon } from "@src/components/common/renderIcon";
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import images from "@src/constants/images";
+import Home from "@src/screens/Home/Index";
+
 
 
 const Tab = createBottomTabNavigator();
 
-// Dummy Screens
-const HomeScreen = () => (
-  <View>
-    <Text>Home</Text>
-  </View>
-);
 const FinanceScreen = () => (
   <View>
     <Text>Finance</Text>
@@ -30,16 +26,16 @@ const MoreScreen = () => (
   </View>
 );
 
-// Custom Tab Bar Component
+// Custom Tab Bar Component 
 const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navigation })=> {
 
     const iconNames = ['home', 'dollar-sign', '' , 'credit-card', 'grid' ]
   return (
-    <View className=" bg-[#00000000] h-[13vh] flex-row justify-between  items-center">
+    <View className=" bg-[#000000] h-[13vh] flex-row justify-between  items-center">
       <ImageBackground 
       source={images.home.background}
-        className=" flex-row justify-around 
-        py-[3vh] mx-[4vh] rounded-xl w-[85vw]"
+        className=" flex-row justify-around h-[10vh]
+        py-[3vh] mx-[2.6vh] rounded-xl w-[90vw] mb-[2vh]"
         >
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
@@ -102,10 +98,15 @@ const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navig
 
 const DashboardStack = () => {
   return (
-    <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />}>
+    <Tab.Navigator 
+    tabBar={(props) => <CustomTabBar {...props} />} 
+    screenOptions={{
+      headerShown: false,
+    }}
+    >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{ tabBarLabel: "home" }}
       />
       <Tab.Screen
@@ -115,7 +116,7 @@ const DashboardStack = () => {
       />
       <Tab.Screen
         name="Center"
-        component={HomeScreen}
+        component={Home}
         options={{ tabBarLabel: "center" }}
       />
       <Tab.Screen

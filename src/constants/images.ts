@@ -14,6 +14,10 @@ const images = {
     home: {
       fancylogo: require("@src/assets/icons/fancyLogo.png"),
       background: require("@src/assets/icons/Background.png"),
+      avatar: require("@src/assets/images/avatar.png"),
+      temp: require("@src/assets/images/temperature.png"),
+      badge: require("@src/assets/images/Badge.png"),
+      chart: require("@src/assets/images/chart.png"),
     },
     user: {
      

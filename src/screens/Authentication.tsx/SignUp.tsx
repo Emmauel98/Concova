@@ -1,4 +1,4 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { View, Image, Text, TouchableOpacity, StatusBar } from "react-native";
 import React from "react";
 import { SafeAreaView } from "@src/components/layout/safeAreaView";
 import {
@@ -10,6 +10,7 @@ import images from "@src/constants/images";
 import CustomText from "@src/components/UserAuthentication/CustomText";
 import LoginButton from "@src/components/UserAuthentication/LoginButton";
 import SignInWith from "@src/components/UserAuthentication/SignInWith";
+
 
 const SignUp = () => {
   return (
@@ -36,6 +37,7 @@ const SignUp = () => {
         </View>
         <SignInWith />
       </View>
+      <StatusBar backgroundColor={'dark'} />
     </SafeAreaView>
   );
 };
