@@ -1,14 +1,35 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ImageBackground,
+} from "react-native";
 import { renderIcon } from "@src/components/common/renderIcon";
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import images from "@src/constants/images";
 import Home from "@src/screens/Home/Index";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Ionicons, Entypo, Octicons, FontAwesome } from "@expo/vector-icons";
+import { Host } from "react-native-portalize";
+import { appColors } from "../constants/colors";
+import Transfer from "@src/components/AssetsComponent/Transfer";
+import Assets from "@src/screens/AssetsPage";
+import SelectBank from "@src/components/AssetsComponent/Transfer/SelectBank";
 
 
 
+
+export type StackNavprops = {
+  Main: any;
+  transfer: any;
+  select_bank: any;
+}
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator<StackNavprops>();
 
 const FinanceScreen = () => (
   <View>
@@ -26,17 +47,20 @@ const MoreScreen = () => (
   </View>
 );
 
-// Custom Tab Bar Component 
-const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navigation })=> {
-
-    const iconNames = ['home', 'dollar-sign', '' , 'credit-card', 'grid' ]
+// Custom Tab Bar Component
+const CustomTabBar: React.FC<BottomTabBarProps> = ({
+  state,
+  descriptors,
+  navigation,
+}) => {
+  const iconNames = ["home", "dollar-sign", "", "credit-card", "grid"];
   return (
     <View className=" bg-[#000000] h-[13vh] flex-row justify-between  items-center">
-      <ImageBackground 
-      source={images.home.background}
+      <ImageBackground
+        source={images.home.background}
         className=" flex-row justify-around h-[10vh]
         py-[3vh] mx-[2.6vh] rounded-xl w-[90vw] mb-[2vh]"
-        >
+      >
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const label =
@@ -47,11 +71,10 @@ const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navig
               : route.name;
 
           const isFocused = state.index === index;
-          const color = isFocused ? '#FAC153' : '#fff';
-          const iconProvider = route.name === 'Transactions' ? 'Entypo' : 'Feather';
-          const iconName = iconNames[index ];
-
-          console.log(iconName, iconProvider)
+          const color = isFocused ? "#FAC153" : "#fff";
+          const iconProvider =
+            route.name === "Transactions" ? "Entypo" : "Feather";
+          const iconName = iconNames[index];
 
           const onPress = () => {
             const event = navigation.emit({
@@ -73,11 +96,11 @@ const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navig
               accessibilityLabel={options.tabBarAccessibilityLabel}
               testID={options.tabBarTestID}
               onPress={onPress}
-            className="px-[10vw]"
+              className="px-[10vw]"
             >
               {route.name === "Center" ? (
-                <View 
-                className=" w-[18.3vw] h-[8.5vh] justify-center items-center absolute 
+                <View
+                  className=" w-[18.3vw] h-[8.5vh] justify-center items-center absolute 
                 top-[-4.5vh]"
                 >
                   <Image
@@ -94,15 +117,15 @@ const  CustomTabBar: React.FC<BottomTabBarProps>  = ({ state, descriptors, navig
       </ImageBackground>
     </View>
   );
-}
+};
 
-const DashboardStack = () => {
+const TabNavigation = () => {
   return (
-    <Tab.Navigator 
-    tabBar={(props) => <CustomTabBar {...props} />} 
-    screenOptions={{
-      headerShown: false,
-    }}
+    <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -111,7 +134,7 @@ const DashboardStack = () => {
       />
       <Tab.Screen
         name="Assets"
-        component={FinanceScreen}
+        component={Assets}
         options={{ tabBarLabel: "usd" }}
       />
       <Tab.Screen
@@ -133,45 +156,54 @@ const DashboardStack = () => {
   );
 };
 
-export default DashboardStack;
+const DashboardStack = () => {
+  return (
+    <Host>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={TabNavigation}
+          options={{ headerShown: false, title: "" }}
+        />
+        <Stack.Group>
+          <Stack.Screen
+            name="transfer"
+            component={Transfer}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="select_bank"
+            component={SelectBank}
+            options={{ headerShown: false, title: "" }}
+          />
+        </Stack.Group>
+      </Stack.Navigator>
+    </Host>
+  );
+};
 
 const styles = StyleSheet.create({
-  tabBarContainer: {
-    backgroundColor: "#000",
+  tabBarStyles: {
+    height: 100,
     paddingBottom: 10,
-    paddingTop: 10,
+    backgroundColor: appColors.white,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     position: "absolute",
+    left: 0,
+    right: 0,
     bottom: 0,
-    width: "100%",
-    height: 70,
+    borderTopWidth: 0,
   },
-  tabBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    backgroundColor: "#3e3e3e",
-    padding: 10,
-    borderRadius: 20,
-    marginHorizontal: 10,
-  },
-  tabButton: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  centerButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: "#F6411B",
+  iconContainer: {
+    width: 50,
+    height: 50,
+    backgroundColor: appColors.orange,
+    borderRadius: 50,
+    padding: 12,
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    top: -25, // Move the button upwards
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 4 },
-  },
-  centerIcon: {
-    width: 40,
-    height: 40,
   },
 });
+
+export default DashboardStack;

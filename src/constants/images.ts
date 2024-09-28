@@ -19,14 +19,44 @@ const images = {
       badge: require("@src/assets/images/Badge.png"),
       chart: require("@src/assets/images/chart.png"),
     },
-    user: {
-     
+    trends: {
+      handPink : require("@src/assets/icons/handPink.png"),
+      handGreen : require("@src/assets/icons/handGreen.png"),
+      handYellow : require("@src/assets/icons/handYellow.png"),
     },
-    wallet:{
-      
+    challenge:{
+      cartoon: require("@src/assets/icons/emptyCartoon.png"),
+      cart: require("@src/assets/icons/cart.png"),
+      rocket: require("@src/assets/icons/rocket.png"),
     },
-    gateAccess:{
-      
+    expenses:{
+      barChartYellow: require("@src/assets/icons/barChart.png"),
+      barChartPink: require("@src/assets/icons/barChartPink.png"),
+      barChartGreen: require("@src/assets/icons/barChartGreen.png"),
+      barChartTeal: require("@src/assets/icons/barChartTeal.png"),
+      handPink : require("@src/assets/icons/handPink.png"),
+      handGreen : require("@src/assets/icons/handGreen.png"),
+      handYellow : require("@src/assets/icons/handYellow.png"),
+      handTeal : require("@src/assets/icons/handTeal.png"),
+    },
+    Assets:{
+      curvedChart: require("@src/assets/icons/CurvedChart.png"),
+    },
+    MoneyTransfer:{
+      bank: require("@src/assets/icons/bank.png"),
+      concavo: require("@src/assets/icons/concaboBank.png"),
+      withdraw: require("@src/assets/icons/withdraw.png"),
+    },
+    LinkedBank:{
+      logo: require("@src/assets/icons/concavoLogoColoured.png"),
+      bam: require("@src/assets/icons/Bam.png"),
+      Interbanko: require("@src/assets/icons/interbanko.png"),
+      linegraphyellow: require("@src/assets/images/linegraphyellow.png"),
+      linegraphgreen: require("@src/assets/images/linegraphgreen.png"),
+    },
+    others:{
+      link: require("@src/assets/icons/link.png"),
+      bag_tick: require("@src/assets/icons/bag-tick.png"),
     },
     newRequest:{
       
