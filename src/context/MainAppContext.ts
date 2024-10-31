@@ -2,13 +2,16 @@
 import { createContext, useContext } from "react";
 import { StyleProp } from "react-native";
 import { ViewStyle } from "react-native";
+import { ImageProps } from "react-native";
 
 
 export type MainAppContextType = {
   customNavigationForTransferPst: number;
   setCustomNavigationForTransferPst: (value: number) => void;
-  selectBank: string;
-  setSelectBank: (value: string) => void;
+  selectBankName: string;
+  setSelectBankName: (value: string) => void;
+  selectBankLogo: ImageProps | '';
+  setSelectBankLogo: (value: ImageProps | '') => void;
   TransferTo: 'Transfer to Bank' | 'Transfer to Concavo' | 'Select a Bank' | '';
   setTransferTo: (value: 'Transfer to Bank' | 'Transfer to Concavo' | 'Select a Bank' | '') => void;
   indicator: StyleProp<ViewStyle>;

@@ -10,12 +10,15 @@ import OnboardingContext from "./context/onboarding";
 import MainAppContext from "./context/MainAppContext";
 import { StyleProp } from "react-native";
 import { ViewStyle } from "react-native";
+import { ImageProps } from "react-native";
+
 
 
 export default function App() {
   const [verify, setVerify] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#CECAC3");
-  const [selectBank, setSelectBank] = useState<string>("");
+  const [selectBankName, setSelectBankName] = useState<string>("");
+  const [selectBankLogo, setSelectBankLogo] = useState<ImageProps | ''>("");
   const [TransferTo, setTransferTo] = useState<'Transfer to Bank' | 'Transfer to Concavo' | 'Select a Bank' | ''>("");
   const [customNavigationForTransferPst, setCustomNavigationForTransferPst] =
     useState<number>(0);
@@ -36,8 +39,10 @@ export default function App() {
              setIndicator,
              TransferTo, 
              setTransferTo,
-             selectBank, 
-             setSelectBank,
+             selectBankName, 
+             setSelectBankName,
+             selectBankLogo, 
+             setSelectBankLogo,
           }}
         >
           <SafeAreaProvider>

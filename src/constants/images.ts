@@ -58,6 +58,18 @@ const images = {
       link: require("@src/assets/icons/link.png"),
       bag_tick: require("@src/assets/icons/bag-tick.png"),
     },
+    transfer:{
+      bancoIndustry: require("@src/assets/images/Transfer/bancoIndustry.png"),
+      bam: require("@src/assets/images/Transfer/bam.png"),
+      GTC: require("@src/assets/images/Transfer/GTC.png"),
+      interbanco: require("@src/assets/images/Transfer/interbanco.png"),
+      bancoInmobiliario: require("@src/assets/images/Transfer/bancoInmobiliario.png"),
+      bantrab: require("@src/assets/images/Transfer/bantrab.png"),
+      AAAFinance: require("@src/assets/images/Transfer/AAAFinance.png"),
+      concavo: require("@src/assets/images/Transfer/concavo.png"),
+      fingerprint: require("@src/assets/images/Transfer/fingerprint.png"),
+      tick_circle: require("@src/assets/images/Transfer/tick-circle.png"),
+    },
     newRequest:{
       
     },

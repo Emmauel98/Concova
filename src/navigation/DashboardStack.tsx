@@ -19,6 +19,9 @@ import { appColors } from "../constants/colors";
 import Transfer from "@src/components/AssetsComponent/Transfer";
 import Assets from "@src/screens/AssetsPage";
 import SelectBank from "@src/components/AssetsComponent/Transfer/SelectBank";
+import TransferAmount from "@src/components/AssetsComponent/Transfer/TransferAmount";
+import SuccessFulPayment from "@src/screens/AssetsPage/SuccessFulPayment";
+
 
 
 
@@ -27,6 +30,8 @@ export type StackNavprops = {
   Main: any;
   transfer: any;
   select_bank: any;
+  Transfer_Amount: any; 
+  successful_payment: any;
 }
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator<StackNavprops>();
@@ -174,6 +179,16 @@ const DashboardStack = () => {
           <Stack.Screen
             name="select_bank"
             component={SelectBank}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Transfer_Amount"
+            component={TransferAmount}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="successful_payment"
+            component={SuccessFulPayment}
             options={{ headerShown: false, title: "" }}
           />
         </Stack.Group>

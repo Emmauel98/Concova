@@ -8,13 +8,11 @@ import TransferBoard from "./TransferBoard";
 import TransferHistory from "./TransferHistory";
 import { useMainAppContextFunc } from "@src/utils/Context";
 
-
 const Transfer = () => {
-    const { TransferTo } =
-    useMainAppContextFunc();
+  const { TransferTo } = useMainAppContextFunc();
 
-    const TransferToValidated = TransferTo === 'Select a Bank' ? 'Transfer to Bank' : TransferTo;
-
+  const TransferToValidated =
+    TransferTo === "Select a Bank" ? "Transfer to Bank" : TransferTo;
 
   return (
     <SafeAreaView className=" flex-1 h-screen bg-[#000000]">
