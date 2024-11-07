@@ -1,0 +1,46 @@
+Chunk Array 
+
+Logic:
+
+const chunkArray = (arr, chunkSize) => {
+  const results = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    results.push(arr.slice(i, i + chunkSize));
+  }
+  return results;
+};
+
+
+Usage: 
+
+import React from "react";
+import { View, Text } from "react-native";
+import { listData } from "@src/constants/data";
+
+const ListItem = ({ item }) => (
+  <View style={{ flex: 1, margin: 10, alignItems: "center" }}>
+    {/* Render your icon here */}
+    <Text>{item.name}</Text>
+  </View>
+);
+
+const Grid = () => {
+  const chunkedData = chunkArray(listData, 4); // Split into rows of 4
+
+  return (
+    <View style={{ padding: 10 }}>
+      {chunkedData.map((row, rowIndex) => (
+        <View key={rowIndex} style={{ flexDirection: "row" }}>
+          {row.map((item, index) => (
+            <ListItem key={index} item={item} />
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+};
+
+export default Grid;
+
+
+--------------------------------------------------

@@ -1,15 +1,24 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { renderIcon } from "../common/renderIcon";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackNavprops } from "@src/navigation/DashboardStack";
 
 const ChartTitle = ({ name }: { name: string }) => {
   const display = name === "Others" ? "none" : "flex";
+  const Navigation = useNavigation<StackNavigationProp<StackNavprops>>();
+
   
   return (
     <View className=" flex-row justify-between px-[3vw] py-[2vh]  rounded-3xl">
       <Text className="text-white text-[16px] font-bold">{name}</Text>
       <TouchableOpacity
-
+        onPress={()=>{
+          if (name === "My Budgets") {
+            Navigation.navigate('Budget');
+          }
+        }}
 >
         {name === "Transactions" ? (
           <View className=" flex-row"

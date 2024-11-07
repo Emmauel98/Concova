@@ -2,18 +2,21 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { renderIcon } from "@src/components/common/renderIcon";
 import images from "@src/constants/images";
+import { useMainAppContextFunc } from "@src/utils/Context";
 
 const PaymentModalContent = ({
   billRef,
   setShowOtherAccounts,
   showOtherAccounts,
-  setModalVisible
+  setModalVisible,
 }: {
   billRef: any;
-  setShowOtherAccounts: (value: boolean)=> void;
+  setShowOtherAccounts: (value: boolean) => void;
   showOtherAccounts: boolean;
-  setModalVisible: (value: boolean)=> void;
+  setModalVisible: (value: boolean) => void;
 }) => {
+  const { transferAccontNumber, transferAmount } = useMainAppContextFunc();
+
   return (
     <View className="pb-[5vh] pt-[5vh] bg-[#05070D] shadow-sm shadow-white rounded-3xl">
       {/* ................... */}
@@ -28,7 +31,9 @@ const PaymentModalContent = ({
       </View>
       {/* ................... */}
       <View className=" flex-row justify-center items-center mt-5">
-        <Text className=" text-[40px] font-medium text-white">Q 550</Text>
+        <Text className=" text-[40px] font-medium text-white">
+          Q {Number(transferAmount).toLocaleString()}
+        </Text>
       </View>
       {/* ................... */}
       <View
@@ -37,12 +42,16 @@ const PaymentModalContent = ({
       >
         <View className=" flex-row justify-between mx-[2vw] items-center mt-5 ">
           <Text className=" text-[12px] font-normal text-white">Amount</Text>
-          <Text className=" text-[12px] font-normal text-white">Q 550.00</Text>
+          <Text className=" text-[12px] font-normal text-white">
+            Q {Number(transferAmount).toLocaleString()}
+          </Text>
         </View>
         <View className=" flex-row justify-between mx-[2vw] items-center mt-5">
-          <Text className=" text-[12px] font-normal text-white">Account</Text>
           <Text className=" text-[12px] font-normal text-white">
-            90139488532
+            Account Number
+          </Text>
+          <Text className=" text-[12px] font-normal text-white">
+            {transferAccontNumber}
           </Text>
         </View>
         <View className=" flex-row justify-between mx-[2vw] items-center mt-5">
@@ -70,7 +79,7 @@ const PaymentModalContent = ({
 
       <View
         className="flex-row items-center justify-between px-[5vw] mx-[5vw] border border-[#ffffff11] rounded-xl mt-5
-                bg-[#111116] pb-5"
+        bg-[#111116] pb-5"
       >
         <View className=" flex-row  mx-[1vw] mt-5  items-center">
           <Image source={images.transfer.bam} className=" w-[11vw] h-[5vh]" />
@@ -78,10 +87,7 @@ const PaymentModalContent = ({
             Bam(Q 29,340.20)
           </Text>
         </View>
-        <View
-          className="flex-row mt-4"
-          // onPress={() => billRef.current?.close()}
-        >
+        <View className="flex-row mt-4">
           {renderIcon("check", "MaterialCommunityIcons", 25, "#EDAF39")}
         </View>
       </View>
@@ -98,9 +104,9 @@ const PaymentModalContent = ({
           borderRadius: 5,
           marginVertical: 25,
         }}
-        onPress={()=>{
-            billRef.current?.close();
-            setModalVisible(true);
+        onPress={() => {
+          billRef.current?.close();
+          setModalVisible(true);
         }}
       >
         <Text className=" text-[16px] font-normal">Confirm to pay</Text>

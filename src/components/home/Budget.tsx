@@ -1,13 +1,23 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import ChartTitle from "./ChartTitle";
 import CustomBox from "../common/CustomBox";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackNavprops } from "@src/navigation/DashboardStack";
 
 
 const Budget = () => {
+
+  const Navigation = useNavigation<StackNavigationProp<StackNavprops>>();
+
   return (
     <CustomBox>
-      <ChartTitle name="My Budgets" />
+      <TouchableOpacity
+      onPress={()=> Navigation.navigate('Budget')}
+      >
+        <ChartTitle name="My Budgets" />
+      </TouchableOpacity>
       <View className="ml-[5vw] mb-[2vh]">
         <CustomText type="small" text="You have" />
         <CustomText type="big" text="Q 29,880" />
@@ -40,16 +50,14 @@ const CustomText = ({
   );
 };
 const CustomLoad = () => {
-  const width = '30%';
+  const width = "30%";
 
-    return (
+  return (
     <View className=" bg-[#32fc6475] w-[75vw] mb-[2vh] mx-[5vw] h-[1vh] rounded-lg">
-      <View className=" bg-[#32FC65]   h-[1vh] rounded-lg"
-      style={{ width}}
+      <View
+        className=" bg-[#32FC65]   h-[1vh] rounded-lg"
+        style={{ width }}
       ></View>
     </View>
   );
 };
-
-
-

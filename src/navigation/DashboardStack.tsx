@@ -21,8 +21,17 @@ import Assets from "@src/screens/AssetsPage";
 import SelectBank from "@src/components/AssetsComponent/Transfer/SelectBank";
 import TransferAmount from "@src/components/AssetsComponent/Transfer/TransferAmount";
 import SuccessFulPayment from "@src/screens/AssetsPage/SuccessFulPayment";
-
-
+import Withdraw from "@src/components/AssetsComponent/Transfer/Withdraw/Withdraw";
+import Budget from "@src/screens/Budget";
+import BudgetAmount from "@src/components/Budget/BudgetAmount";
+import BudgetPreview from "@src/components/Budget/BudgetPreview";
+import SeeBudget from "@src/components/Budget/SeeBudget";
+import Cards from "@src/screens/Cards.tsx";
+import CardDetails from "@src/components/Cards/CardDetails";
+import FundWallets from "@src/components/Cards/FundWallets";
+import WithdrawFund from "@src/components/Cards/WithdrawFund";
+import CardTransactions from "@src/components/Cards/CardTransactions";
+import LifeStyle from "@src/screens/LifeStyle";
 
 
 
@@ -32,25 +41,20 @@ export type StackNavprops = {
   select_bank: any;
   Transfer_Amount: any; 
   successful_payment: any;
+  withdraw: any;
+  Budget: any;
+  BudgetAmount: any;
+  BudgetPreview: any;
+  SeeBudget: any;
+  CardDetails: any;
+  FundWallets: any;
+  WithdrawFund: any;
+  CardTransactions: any;
 }
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator<StackNavprops>();
 
-const FinanceScreen = () => (
-  <View>
-    <Text>Finance</Text>
-  </View>
-);
-const CardsScreen = () => (
-  <View>
-    <Text>Cards</Text>
-  </View>
-);
-const MoreScreen = () => (
-  <View>
-    <Text>More</Text>
-  </View>
-);
+
 
 // Custom Tab Bar Component
 const CustomTabBar: React.FC<BottomTabBarProps> = ({
@@ -148,13 +152,13 @@ const TabNavigation = () => {
         options={{ tabBarLabel: "center" }}
       />
       <Tab.Screen
-        name="Transactions"
-        component={CardsScreen}
+        name="Cards"
+        component={Cards}
         options={{ tabBarLabel: "credit-card" }}
       />
       <Tab.Screen
         name="More"
-        component={MoreScreen}
+        component={LifeStyle}
         options={{ tabBarLabel: "th-large" }}
       />
     </Tab.Navigator>
@@ -189,6 +193,57 @@ const DashboardStack = () => {
           <Stack.Screen
             name="successful_payment"
             component={SuccessFulPayment}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="withdraw"
+            component={Withdraw}
+            options={{ headerShown: false, title: "" }}
+          />
+        </Stack.Group>
+        {/* Budget Group stack */}
+        <Stack.Group>
+          <Stack.Screen
+            name="Budget"
+            component={Budget}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="BudgetAmount"
+            component={BudgetAmount}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="BudgetPreview"
+            component={BudgetPreview}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="SeeBudget"
+            component={SeeBudget}
+            options={{ headerShown: false, title: "" }}
+          />
+        </Stack.Group>
+        {/* Card Group stack */}
+        <Stack.Group>
+          <Stack.Screen
+            name="CardDetails"
+            component={CardDetails}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="FundWallets"
+            component={FundWallets}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="WithdrawFund"
+            component={WithdrawFund}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="CardTransactions"
+            component={CardTransactions}
             options={{ headerShown: false, title: "" }}
           />
         </Stack.Group>

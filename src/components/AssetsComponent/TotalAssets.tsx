@@ -10,7 +10,7 @@ const TotalAssets = () => {
         <View className=" left-[4vw]">
           <Image
             source={images.Assets.curvedChart}
-            className=" w-[105vw] h-[25vh]"
+            className=" w-[105vw] h-[25.3vh] relative left-[1.5vw]"
           />
         </View>
         <View className=" flex-row top-[-8vh] left-[25vw]">

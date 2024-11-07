@@ -16,13 +16,16 @@ import { StackNavprops } from "@src/navigation/DashboardStack";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 const TransferBoard = () => {
-  const { selectBankName, setTransferTo, selectBankLogo } = useMainAppContextFunc();
+  const {
+    selectBankName,
+    setTransferTo,
+    selectBankLogo,
+    setTransferAccontNumber,
+    transferAccontNumber,
+  } = useMainAppContextFunc();
   const placeHolder = selectBankName ? selectBankName : "Select Bank";
   const color = selectBankName ? "#ffff" : "#FFFFFF44";
   const Navigation = useNavigation<StackNavigationProp<StackNavprops>>();
-  const [ amount, setAmount ] = useState<string>();
-  
- 
 
   return (
     <CustomBox>
@@ -33,7 +36,7 @@ const TransferBoard = () => {
         placeholderTextColor={"#FFFFFF44"}
         className=" w-full mx-[2vw] py-[2vh] text-white"
         maxLength={10}
-        onChangeText={(text)=> setAmount(text)}
+        onChangeText={(text) => setTransferAccontNumber(text)}
       />
       <View className=" h-[0.1vh] w-full bg-[#ffffff71]"></View>
       {selectBankName !== "Concavo" && (
@@ -51,9 +54,7 @@ const TransferBoard = () => {
                   className="w-[8.5vw] h-[4vh] mr-[2vw]"
                 />
               )}
-              <Text className="text-[16px] font-normal"
-              style={{ color}}
-              >
+              <Text className="text-[16px] font-normal" style={{ color }}>
                 {placeHolder}
               </Text>
             </View>
@@ -62,10 +63,11 @@ const TransferBoard = () => {
         </Pressable>
       )}
       <Pressable
-      disabled={!amount ||  !selectBankLogo ? true : false}
+        disabled={!transferAccontNumber || !selectBankLogo ? true : false}
         style={({ pressed }) => [
           {
-            backgroundColor: pressed || (!amount || !selectBankLogo) ? "#573e10" : "#EDAF39",
+            backgroundColor:
+              pressed || !transferAccontNumber || !selectBankLogo ? "#573e10" : "#EDAF39",
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
@@ -74,9 +76,9 @@ const TransferBoard = () => {
             marginVertical: 25,
           },
         ]}
-        onPress={()=>{
-          setTransferTo('Transfer to Bank')
-         Navigation.navigate('Transfer_Amount')
+        onPress={() => {
+          setTransferTo("Transfer to Bank");
+          Navigation.navigate("Transfer_Amount");
         }}
       >
         <View

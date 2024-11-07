@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { SafeAreaView } from "@src/components/layout/safeAreaView";
 import Header from "@src/components/common/Header";
 import TotalAssets from "@src/components/AssetsComponent/TotalAssets";

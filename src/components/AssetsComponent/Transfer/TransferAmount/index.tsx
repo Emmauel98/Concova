@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Modal,
   ScrollView,
@@ -27,14 +27,13 @@ import PaymentModalContent from "./PaymentModalContent";
 import EnterPinCode from "./EnterPinCode";
 
 const TransferAmount = () => {
-  const { TransferTo, selectBankLogo, selectBankName } =
+  const { TransferTo, selectBankLogo, selectBankName,setTransferAmount, transferAmount } =
     useMainAppContextFunc();
-  const [amount, setAmount] = useState<string>();
   const [note, setNote] = useState<string>();
   const billRef = useRef<Modalize>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [showOtherAccounts, setShowOtherAccounts] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+
 
   return (
     <SafeAreaView className=" flex-1 h-screen bg-[#000000]">
@@ -74,14 +73,14 @@ const TransferAmount = () => {
               keyboardType="numeric"
               placeholderTextColor={"#FFFFFF44"}
               className=" w-full mr-[2vw] py-[2vh] pl-2 text-white"
-              onSubmitEditing={() => console.log(amount)}
+              onSubmitEditing={() => console.log(transferAmount)}
               enterKeyHint="done"
-              value={amount}
-              onChangeText={(text) => setAmount(text)}
+              value={transferAmount}
+              onChangeText={(text) => setTransferAmount(text)}
             />
             <TouchableOpacity
               className="absolute right-[5vw] top-[2vh]"
-              onPress={() => setAmount("")}
+              onPress={() => setTransferAmount("")}
             >
               {renderIcon("close", "MaterialCommunityIcons", 25, "#fff")}
             </TouchableOpacity>
@@ -120,7 +119,7 @@ const TransferAmount = () => {
               className="py-[1.4vh] rounded-lg flex-row justify-center
             items-center"
               style={{
-                backgroundColor: !amount ? "#573e10" : "#EDAF39",
+                backgroundColor: !transferAmount ? "#573e10" : "#EDAF39",
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",

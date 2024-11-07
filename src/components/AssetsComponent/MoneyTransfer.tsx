@@ -1,5 +1,5 @@
 import { View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomBox from "../common/CustomBox";
 import { CustomTextForAssets } from "./CustomTextForAssets";
 import { MoneyTransferOptions } from "@src/constants/data";
@@ -17,14 +17,17 @@ const MoneyTransfer = () => {
     setIndicator,
     setSelectBankName,
     setSelectBankLogo,
+    setTransferAccontNumber,
+    setTransferAmount,
   } = useMainAppContextFunc();
-
-  
 
   const NavigationHandler = (name: string) => {
     switch (name) {
       case "To Bank":
         setSelectBankName("");
+        setSelectBankLogo("");
+        setTransferAccontNumber("");
+        setTransferAccontNumber("");
         setCustomNavigationForTransferPst(0);
         setIndicator({ left: "1%" });
         setTransferTo("Transfer to Bank");
@@ -32,16 +35,30 @@ const MoneyTransfer = () => {
         break;
       case "To Concavo":
         setSelectBankName("Concavo");
+        setSelectBankLogo(images.transfer.concavo);
+        setTransferAccontNumber("");
+        setTransferAccontNumber("");
         setCustomNavigationForTransferPst(50);
         setIndicator({ left: "45%" });
         setTransferTo("Transfer to Concavo");
         Navigation.navigate("transfer");
+        break;
+      case "Withdraw":
+        console.log('heello')
+        Navigation.navigate("withdraw");
         break;
 
       default:
         break;
     }
   };
+
+  useEffect(() => {
+    setSelectBankName("");
+    setSelectBankLogo("");
+    setTransferAmount("");
+    setTransferAccontNumber("");
+  }, []);
 
   return (
     <CustomBox>

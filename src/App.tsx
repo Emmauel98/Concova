@@ -18,6 +18,9 @@ export default function App() {
   const [verify, setVerify] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#CECAC3");
   const [selectBankName, setSelectBankName] = useState<string>("");
+  const [transferAccontNumber, setTransferAccontNumber] = useState<string>("");
+  const [transferAmount, setTransferAmount] = useState<string>("");
+  const [withdrawAmount, setWithdrawAmount] = useState<string>("");
   const [selectBankLogo, setSelectBankLogo] = useState<ImageProps | ''>("");
   const [TransferTo, setTransferTo] = useState<'Transfer to Bank' | 'Transfer to Concavo' | 'Select a Bank' | ''>("");
   const [customNavigationForTransferPst, setCustomNavigationForTransferPst] =
@@ -43,6 +46,12 @@ export default function App() {
              setSelectBankName,
              selectBankLogo, 
              setSelectBankLogo,
+             transferAccontNumber,
+              setTransferAccontNumber,
+              transferAmount, 
+              setTransferAmount,
+              withdrawAmount, 
+              setWithdrawAmount
           }}
         >
           <SafeAreaProvider>

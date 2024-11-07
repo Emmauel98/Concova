@@ -69,6 +69,30 @@ const images = {
       concavo: require("@src/assets/images/Transfer/concavo.png"),
       fingerprint: require("@src/assets/images/Transfer/fingerprint.png"),
       tick_circle: require("@src/assets/images/Transfer/tick-circle.png"),
+      save: require("@src/assets/images/Transfer/save.png"),
+      share: require("@src/assets/images/Transfer/share.png"),
+      mockup: require("@src/assets/images/Transfer/mockup.png"),
+    },
+    budget:{
+      Piggybank: require("@src/assets/images/Budget/Piggybank.png"),
+      celebration: require("@src/assets/images/Budget/celebration.png"),
+    },
+    cards:{
+      // IronBody
+      IronBody: require("@src/assets/images/cards/Iron Body.png"),
+      concavoWhite: require("@src/assets/images/cards/concavoWhite.png"),
+      concavoGold: require("@src/assets/images/cards/concavoGold.png"),
+      visa: require("@src/assets/images/cards/visa.png"),
+      VirualCardBottom: require("@src/assets/images/cards/VirualCardBottom.png"),
+      loan: require("@src/assets/images/cards/loan.png"),
+    },
+    lifeStyle:{
+      concavo: require("@src/assets/images/lifeStyle/concavo.png"),
+      festival: require("@src/assets/images/lifeStyle/festival.png"),
+      heart: require("@src/assets/images/lifeStyle/heart.png"),
+      external: require("@src/assets/images/lifeStyle/external.png"),
+      concavoSmall: require("@src/assets/images/lifeStyle/concavoSmall.png"),
+      
     },
     newRequest:{
       

@@ -10,6 +10,12 @@ export type MainAppContextType = {
   setCustomNavigationForTransferPst: (value: number) => void;
   selectBankName: string;
   setSelectBankName: (value: string) => void;
+  transferAccontNumber: string;
+  setTransferAccontNumber: (value: string) => void;
+  transferAmount: string;
+  setTransferAmount: (value: string) => void;
+  withdrawAmount: string;
+  setWithdrawAmount: (value: string) => void;
   selectBankLogo: ImageProps | '';
   setSelectBankLogo: (value: ImageProps | '') => void;
   TransferTo: 'Transfer to Bank' | 'Transfer to Concavo' | 'Select a Bank' | '';
