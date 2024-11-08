@@ -92,7 +92,17 @@ const images = {
       heart: require("@src/assets/images/lifeStyle/heart.png"),
       external: require("@src/assets/images/lifeStyle/external.png"),
       concavoSmall: require("@src/assets/images/lifeStyle/concavoSmall.png"),
-      
+      conca: require("@src/assets/images/lifeStyle/conca.png"),
+      glow: require("@src/assets/images/lifeStyle/glow.png"),
+      glow_two: require("@src/assets/images/lifeStyle/glow_two.png"),
+      profile: require("@src/assets/images/lifeStyle/profile.png"),
+      tuki: require("@src/assets/images/lifeStyle/tuki.png"),
+      share: require("@src/assets/images/lifeStyle/share.png"),
+      repayTerms: require("@src/assets/images/lifeStyle/repayTerms.png"),
+      carbon: require("@src/assets/images/lifeStyle/carbon.png"),
+      installment: require("@src/assets/images/lifeStyle/installment.png"),
+      LoanBackground: require("@src/assets/images/lifeStyle/LoanBackground.png"),
+      mockup: require("@src/assets/images/lifeStyle/mockup.png"),
     },
     newRequest:{
       

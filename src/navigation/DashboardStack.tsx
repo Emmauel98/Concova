@@ -32,6 +32,17 @@ import FundWallets from "@src/components/Cards/FundWallets";
 import WithdrawFund from "@src/components/Cards/WithdrawFund";
 import CardTransactions from "@src/components/Cards/CardTransactions";
 import LifeStyle from "@src/screens/LifeStyle";
+import OutstandingLoan from "@src/components/LifeStyle/OutstandingLoan";
+import Loan from "@src/components/LifeStyle/Loan";
+import Refer from "@src/components/LifeStyle/Refer";
+import Invitation from "@src/components/LifeStyle/Invitation";
+import Repayment from "@src/components/LifeStyle/Repayment";
+import Debt from "@src/components/home/Debt";
+import Expenses from "@src/components/home/Expenses";
+import NetCash from "@src/components/home/NetCash";
+import Income from "@src/components/home/Income";
+
+
 
 
 
@@ -50,6 +61,15 @@ export type StackNavprops = {
   FundWallets: any;
   WithdrawFund: any;
   CardTransactions: any;
+  OutstandingLoan: any;
+  Loan: any;
+  Refer: any;
+  Invitation: any;
+  Repayment: any;
+  Expenses: any;
+  Debt: any;
+  NetCash: any;
+  Income: any;
 }
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator<StackNavprops>();
@@ -227,6 +247,35 @@ const DashboardStack = () => {
         {/* Card Group stack */}
         <Stack.Group>
           <Stack.Screen
+            name="Refer"
+            component={Refer}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Loan"
+            component={Loan}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Repayment"
+            component={Repayment}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="OutstandingLoan"
+            component={OutstandingLoan}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Invitation"
+            component={Invitation}
+            options={{ headerShown: false, title: "" }}
+          />
+        </Stack.Group>
+
+        {/* Lifestyle Group stack */}
+        <Stack.Group>
+          <Stack.Screen
             name="CardDetails"
             component={CardDetails}
             options={{ headerShown: false, title: "" }}
@@ -244,6 +293,29 @@ const DashboardStack = () => {
           <Stack.Screen
             name="CardTransactions"
             component={CardTransactions}
+            options={{ headerShown: false, title: "" }}
+          />
+        </Stack.Group>
+        {/* Trends Group stack */}
+        <Stack.Group>
+          <Stack.Screen
+            name="Expenses"
+            component={Expenses}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Debt"
+            component={Debt}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="NetCash"
+            component={NetCash}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Income"
+            component={Income}
             options={{ headerShown: false, title: "" }}
           />
         </Stack.Group>

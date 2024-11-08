@@ -14,6 +14,8 @@ import { renderIcon } from "@src/components/common/renderIcon";
 import BankAccountWithdrawal from "./BankAccountWithdrawal";
 import DisplayAmount from "./DisplayAmount";
 import EnterPasscode from "./EnterPasscode";
+import Advert from "@src/components/common/Advert";
+
 
 const Withdraw = () => {
   const [modalVisbleForWithdrawDetails, setModalVisibleForWithdrawDetails] =
@@ -28,6 +30,7 @@ const Withdraw = () => {
         <View className=" bg-[#000000]">
           <Header />
           <HeaderTitle name={"withdraw"} />
+          <Advert />
         </View>
         <View
           className=" bg-[#111116] w-[94vw] mx-[3vw] mt-[2vh]  

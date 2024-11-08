@@ -29,10 +29,10 @@ const Activities = () => {
           />
         </View>
         <View className="flex-row mx-[5vw]">
-          <View className="bg-[#5077aa] p-4 rounded-full mr-2">
+          <View className="bg-[#0000005e] p-4 rounded-full mr-2">
             <Image source={images.lifeStyle.heart} />
           </View>
-          <View className="bg-[#5077aa] p-4 rounded-full">
+          <View className="bg-[#0000005e] p-4 rounded-full">
             <Image source={images.lifeStyle.external} />
           </View>
         </View>

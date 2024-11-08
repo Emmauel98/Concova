@@ -8,25 +8,25 @@ import TrendComponent from "@src/components/home/TrendComponent";
 import { appColors } from "@src/constants/colors";
 import images from "@src/constants/images";
 
-const Expenses = () => {
+const NetCash = () => {
   return (
     <SafeAreaView className=" flex-1 h-screen bg-[#000000]">
       <ScrollView>
         <View className=" bg-[#000000]">
           <Header />
-          <HeaderTitle name={"Expenses"} />
+          <HeaderTitle name={"Net cash"} />
           <TrendComponent
-            name="Expenses"
-            amount="$1,000 / month"
-            desc="Luis, Your total income is up. keep letting it come in every months."
-            color={appColors.pink}
-            handImage={images.expenses.handPink}
-            BarChartImage={images.expenses.barChartPink}
-          />
+          name="Net cash"
+          amount="$1,000 / month"
+          desc="Luis, Your total income is up. keep letting it come in every months."
+          color={appColors.teal}
+          handImage={images.expenses.handTeal}
+          BarChartImage={images.expenses.barChartTeal}
+        />
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default Expenses;
+export default NetCash

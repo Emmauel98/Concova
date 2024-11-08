@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import ChartTitle from "./ChartTitle";
 import CustomBox from "../common/CustomBox";
@@ -6,6 +6,8 @@ import images from "@src/constants/images";
 import ChunkArray from "@src/utils/ChunkArray";
 import { TrendsData, trendsPropType } from "@src/constants/data";
 import { appColors } from "@src/constants/colors";
+import useNavigate from "@src/constants/navigate";
+
 
 
 const Trends = () => {
@@ -21,6 +23,31 @@ export default Trends;
 
 const Box = () => {
   const rows = ChunkArray(TrendsData, 2) as trendsPropType[][];
+
+  const navigate = useNavigate();
+
+  const action = (name: string)=>{
+    switch (name) {
+      case "Income":
+        navigate('Income')
+        break;
+    
+      case "Debt":
+        navigate('Debt');
+        break;
+
+      case "Expenses":
+        navigate('Expenses');
+        break;
+
+      case "Net cash":
+        navigate('NetCash');
+        break;
+    
+      default:
+        break;
+    }
+  }
 
   return (
     <View className=" mr-[2vw]">
@@ -43,7 +70,9 @@ const Box = () => {
                 : appColors.pink;
 
             return (
-              <View className=" bg-[#1B1B1F] flex-row justify-between p-[20px] mb-[3vh]" key={index}>
+              <TouchableOpacity
+              onPress={()=> action(data.type)} 
+              className=" bg-[#1B1B1F] flex-row justify-between p-[20px] mb-[3vh]" key={index}>
                 <View className=" bg-[#0C0C11] p-[10px] rounded-full mr-[1vw]">
                   <Image source={image} />
                 </View>
@@ -51,7 +80,7 @@ const Box = () => {
                   <Text className=" text-[14px] font-normal text-[#FFFFFF]">{data.type}</Text>
                   <Text  className=" text-[12px] mt-[1vh] font-normal" style={{ color}}>{data.amount}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>
