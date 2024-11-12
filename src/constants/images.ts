@@ -72,6 +72,7 @@ const images = {
       save: require("@src/assets/images/Transfer/save.png"),
       share: require("@src/assets/images/Transfer/share.png"),
       mockup: require("@src/assets/images/Transfer/mockup.png"),
+      totalAssetsBackground: require("@src/assets/images/Transfer/totalAssetsBackground.png"),
     },
     budget:{
       Piggybank: require("@src/assets/images/Budget/Piggybank.png"),
@@ -104,8 +105,8 @@ const images = {
       LoanBackground: require("@src/assets/images/lifeStyle/LoanBackground.png"),
       mockup: require("@src/assets/images/lifeStyle/mockup.png"),
     },
-    newRequest:{
-      
+    profile:{
+      avatar: require("@src/assets/images/profile/avatar.png"),
     },
   };
   

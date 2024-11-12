@@ -43,4 +43,144 @@ const Grid = () => {
 export default Grid;
 
 
+
+
+
 --------------------------------------------------
+
+
+Generate APK
+
+https://docs.expo.dev/build/setup/  --- This generates playstore app link for upload on playstore
+To avoid error, reove the app id from app.json
+
+
+For APK
+"android": {
+        "buildType": "apk"
+      },
+ Use Case: 
+
+ {
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+// {
+//   "cli": {
+//     "version": ">= 13.1.1",
+//     "appVersionSource": "remote"
+//   },
+//   "build": {
+//     "development": {
+//       "developmentClient": true,
+//       "distribution": "internal"
+//     },
+//     "preview": {
+//       "distribution": "internal",
+//       "android": {
+//         "buildType": "apk"
+//       }
+//     },
+//     "production": {
+//       "autoIncrement": true,
+//       "node": "20.11.1"
+//     }
+//   },
+//   "submit": {
+//     "production": {}
+//   }
+// }
+
+{`bg-[#0C0C11]  rounded-full mr-[1vw] ${Platform.OS === 'android' ? "p-[5px]" : "p-[10px]"}`}
+
+
+      eas build --platform android --profile preview
+
+
+
+Text cases for eas.json configuration ----------------------------------- 
+
+
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+       
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+-----------------------------------------------------------------
+
+
+
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+
+
+__________________________________________________________________________________
+

@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   View,
-  Text,
+  Platform,
   TouchableOpacity,
   StyleSheet,
   Image,
@@ -41,6 +41,7 @@ import Debt from "@src/components/home/Debt";
 import Expenses from "@src/components/home/Expenses";
 import NetCash from "@src/components/home/NetCash";
 import Income from "@src/components/home/Income";
+import Userprofile from "@src/screens/UserProfile";
 
 
 
@@ -70,7 +71,9 @@ export type StackNavprops = {
   Debt: any;
   NetCash: any;
   Income: any;
+  Userprofile: any;
 }
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator<StackNavprops>();
 
@@ -134,7 +137,7 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
                 >
                   <Image
                     source={images.home.fancylogo}
-                    className=" w-full h-full relative top-[-4vh] left-[1vw]"
+                    className={`relative top-[-4vh] left-[1vw] ${Platform.OS === 'android' ? "w-[16.5vw] h-full" : "w-full h-full "}`}
                   />
                 </View>
               ) : (
@@ -218,6 +221,11 @@ const DashboardStack = () => {
           <Stack.Screen
             name="withdraw"
             component={Withdraw}
+            options={{ headerShown: false, title: "" }}
+          />
+          <Stack.Screen
+            name="Userprofile"
+            component={Userprofile}
             options={{ headerShown: false, title: "" }}
           />
         </Stack.Group>

@@ -1,11 +1,26 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import React from "react";
 import images from "@src/constants/images";
 import { CustomTextForAssets } from "@src/components/AssetsComponent/CustomTextForAssets";
 
+
 const TotalAssets = () => {
   return (
-    <View className=" relative w-[90vw]">
+    <View
+      className=" relative w-[100vw] mt-[1vh] "
+    >
+      <View className=" mx-[1vw]">
+          <Image
+            source={images.transfer.totalAssetsBackground}
+            className=" w-[95vw] h-[30vh] rounded-3xl absolute top-0 left-[1.5vw]"
+          />
+        </View>
       <View>
         <View className=" left-[4vw]">
           <Image
@@ -20,7 +35,7 @@ const TotalAssets = () => {
             {/* <Image source={images.onboarding.eyeClosed} /> */}
           </TouchableOpacity>
         </View>
-        <View className="top-[-7vh] left-[5vw] flex-row justify-center items-center">
+        <View className="top-[-7vh]  flex-row justify-center items-center">
           <CustomTextForAssets text="Total assets" type="Small" />
         </View>
       </View>

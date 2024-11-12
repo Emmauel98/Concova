@@ -37,7 +37,7 @@ const SignUp = () => {
         </View>
         <SignInWith />
       </View>
-      <StatusBar backgroundColor={'dark'} />
+      <StatusBar backgroundColor={'#000'} />
     </SafeAreaView>
   );
 };

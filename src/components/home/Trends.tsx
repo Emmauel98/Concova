@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Platform } from "react-native";
 import React from "react";
 import ChartTitle from "./ChartTitle";
 import CustomBox from "../common/CustomBox";
@@ -73,7 +73,7 @@ const Box = () => {
               <TouchableOpacity
               onPress={()=> action(data.type)} 
               className=" bg-[#1B1B1F] flex-row justify-between p-[20px] mb-[3vh]" key={index}>
-                <View className=" bg-[#0C0C11] p-[10px] rounded-full mr-[1vw]">
+                <View className={`bg-[#0C0C11] mr-[1vw]  rounded-full ${Platform.OS === 'android' ? "px-[2px]" : "p-[10px]"}`}>
                   <Image source={image} />
                 </View>
                 <View>

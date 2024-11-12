@@ -1,13 +1,20 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import images from "@src/constants/images";
+import useNavigate from "@src/constants/navigate";
+
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
   return (
     <View className=" flex-row justify-between pt-[5vh] pb-[3vh] px-[4vw]">
-      <View>
+      <TouchableOpacity
+      onPress={()=> navigate('Userprofile')}
+      >
         <Image source={images.home.avatar} className="rounded-md" />
-      </View>
+      </TouchableOpacity>
       <View className=" flex-row">
         <Text className=" px-2 text-[16px] mt-[-2.5] font-semibold text-white">
           &#60;

@@ -31,7 +31,7 @@ const Assets = () => {
           <Others />
         </View>
       </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
   );
 };
 
