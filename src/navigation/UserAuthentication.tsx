@@ -24,10 +24,9 @@ const UserAuthentication = () => {
       >
         {/* <Stack.Screen name="login" component={Login} /> */}
         <Stack.Screen name='onboarding' component={OnboardScreen}/>
-        <Stack.Screen name="signup" component={SignUp} />
-        <Stack.Screen name="getVerificationCode" component={GetVerificationCode} />
+        <Stack.Screen name="signup" component={SignUp} /> 
+        <Stack.Screen name="getVerificationCode" component={GetVerificationCode} /> 
         <Stack.Screen name="dasboard" component={DashboardStack} />
-        {/* <Stack.Screen name="verify" component={Login} /> */}
       </Stack.Navigator>
     </View>
   );

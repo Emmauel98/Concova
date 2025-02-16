@@ -7,6 +7,7 @@
     "entryPoint": "./src/App.tsx",
     "icon": "./src/assets/Subtract.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "cover",
@@ -50,7 +51,8 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
+      ],
+      "expo-build-properties"
     ]
   }
 }

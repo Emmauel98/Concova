@@ -126,9 +126,9 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
+              // testID={options.tabBarTestID}
               onPress={onPress}
-              className="px-[10vw]"
+              className="px-[1vw]"
             >
               {route.name === "Center" ? (
                 <View
@@ -137,7 +137,7 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
                 >
                   <Image
                     source={images.home.fancylogo}
-                    className={`relative top-[-4vh] left-[1vw] ${Platform.OS === 'android' ? "w-[16.5vw] h-full" : "w-full h-full "}`}
+                    className={`relative top-[-4vh] left-[1vw] ${Platform.OS === 'android' ? "w-[16.5vw] h-full" : "w-full h-full left-[-8vw]"}`}
                   />
                 </View>
               ) : (
