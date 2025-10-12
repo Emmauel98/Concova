@@ -1,0 +1,186 @@
+Chunk Array 
+
+Logic:
+
+const chunkArray = (arr, chunkSize) => {
+  const results = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    results.push(arr.slice(i, i + chunkSize));
+  }
+  return results;
+};
+
+
+Usage: 
+
+import React from "react";
+import { View, Text } from "react-native";
+import { listData } from "@src/constants/data";
+
+const ListItem = ({ item }) => (
+  <View style={{ flex: 1, margin: 10, alignItems: "center" }}>
+    {/* Render your icon here */}
+    <Text>{item.name}</Text>
+  </View>
+);
+
+const Grid = () => {
+  const chunkedData = chunkArray(listData, 4); // Split into rows of 4
+
+  return (
+    <View style={{ padding: 10 }}>
+      {chunkedData.map((row, rowIndex) => (
+        <View key={rowIndex} style={{ flexDirection: "row" }}>
+          {row.map((item, index) => (
+            <ListItem key={index} item={item} />
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+};
+
+export default Grid;
+
+
+
+
+
+--------------------------------------------------
+
+
+Generate APK
+
+https://docs.expo.dev/build/setup/  --- This generates playstore app link for upload on playstore
+To avoid error, reove the app id from app.json
+
+
+For APK
+"android": {
+        "buildType": "apk"
+      },
+ Use Case: 
+
+ {
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+// {
+//   "cli": {
+//     "version": ">= 13.1.1",
+//     "appVersionSource": "remote"
+//   },
+//   "build": {
+//     "development": {
+//       "developmentClient": true,
+//       "distribution": "internal"
+//     },
+//     "preview": {
+//       "distribution": "internal",
+//       "android": {
+//         "buildType": "apk"
+//       }
+//     },
+//     "production": {
+//       "autoIncrement": true,
+//       "node": "20.11.1"
+//     }
+//   },
+//   "submit": {
+//     "production": {}
+//   }
+// }
+
+{`bg-[#0C0C11]  rounded-full mr-[1vw] ${Platform.OS === 'android' ? "p-[5px]" : "p-[10px]"}`}
+
+
+      eas build --platform android --profile preview
+
+
+
+Text cases for eas.json configuration ----------------------------------- 
+
+
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+       
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+-----------------------------------------------------------------
+
+
+
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+
+
+__________________________________________________________________________________
+

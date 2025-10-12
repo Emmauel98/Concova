@@ -14,18 +14,99 @@ const images = {
     home: {
       fancylogo: require("@src/assets/icons/fancyLogo.png"),
       background: require("@src/assets/icons/Background.png"),
+      avatar: require("@src/assets/images/avatar.png"),
+      temp: require("@src/assets/images/temperature.png"),
+      badge: require("@src/assets/images/Badge.png"),
+      chart: require("@src/assets/images/chart.png"),
     },
-    user: {
-     
+    trends: {
+      handPink : require("@src/assets/icons/handPink.png"),
+      handGreen : require("@src/assets/icons/handGreen.png"),
+      handYellow : require("@src/assets/icons/handYellow.png"),
     },
-    wallet:{
-      
+    challenge:{
+      cartoon: require("@src/assets/icons/emptyCartoon.png"),
+      cart: require("@src/assets/icons/cart.png"),
+      rocket: require("@src/assets/icons/rocket.png"),
     },
-    gateAccess:{
-      
+    expenses:{
+      barChartYellow: require("@src/assets/icons/barChart.png"),
+      barChartPink: require("@src/assets/icons/barChartPink.png"),
+      barChartGreen: require("@src/assets/icons/barChartGreen.png"),
+      barChartTeal: require("@src/assets/icons/barChartTeal.png"),
+      handPink : require("@src/assets/icons/handPink.png"),
+      handGreen : require("@src/assets/icons/handGreen.png"),
+      handYellow : require("@src/assets/icons/handYellow.png"),
+      handTeal : require("@src/assets/icons/handTeal.png"),
     },
-    newRequest:{
-      
+    Assets:{
+      curvedChart: require("@src/assets/icons/CurvedChart.png"),
+    },
+    MoneyTransfer:{
+      bank: require("@src/assets/icons/bank.png"),
+      concavo: require("@src/assets/icons/concaboBank.png"),
+      withdraw: require("@src/assets/icons/withdraw.png"),
+    },
+    LinkedBank:{
+      logo: require("@src/assets/icons/concavoLogoColoured.png"),
+      bam: require("@src/assets/icons/Bam.png"),
+      Interbanko: require("@src/assets/icons/interbanko.png"),
+      linegraphyellow: require("@src/assets/images/linegraphyellow.png"),
+      linegraphgreen: require("@src/assets/images/linegraphgreen.png"),
+    },
+    others:{
+      link: require("@src/assets/icons/link.png"),
+      bag_tick: require("@src/assets/icons/bag-tick.png"),
+    },
+    transfer:{
+      bancoIndustry: require("@src/assets/images/Transfer/bancoIndustry.png"),
+      bam: require("@src/assets/images/Transfer/bam.png"),
+      GTC: require("@src/assets/images/Transfer/GTC.png"),
+      interbanco: require("@src/assets/images/Transfer/interbanco.png"),
+      bancoInmobiliario: require("@src/assets/images/Transfer/bancoInmobiliario.png"),
+      bantrab: require("@src/assets/images/Transfer/bantrab.png"),
+      AAAFinance: require("@src/assets/images/Transfer/AAAFinance.png"),
+      concavo: require("@src/assets/images/Transfer/concavo.png"),
+      fingerprint: require("@src/assets/images/Transfer/fingerprint.png"),
+      tick_circle: require("@src/assets/images/Transfer/tick-circle.png"),
+      save: require("@src/assets/images/Transfer/save.png"),
+      share: require("@src/assets/images/Transfer/share.png"),
+      mockup: require("@src/assets/images/Transfer/mockup.png"),
+      totalAssetsBackground: require("@src/assets/images/Transfer/totalAssetsBackground.png"),
+    },
+    budget:{
+      Piggybank: require("@src/assets/images/Budget/Piggybank.png"),
+      celebration: require("@src/assets/images/Budget/celebration.png"),
+    },
+    cards:{
+      // IronBody
+      IronBody: require("@src/assets/images/cards/Iron Body.png"),
+      concavoWhite: require("@src/assets/images/cards/concavoWhite.png"),
+      concavoGold: require("@src/assets/images/cards/concavoGold.png"),
+      visa: require("@src/assets/images/cards/visa.png"),
+      VirualCardBottom: require("@src/assets/images/cards/VirualCardBottom.png"),
+      loan: require("@src/assets/images/cards/loan.png"),
+    },
+    lifeStyle:{
+      concavo: require("@src/assets/images/lifeStyle/concavo.png"),
+      festival: require("@src/assets/images/lifeStyle/festival.png"),
+      heart: require("@src/assets/images/lifeStyle/heart.png"),
+      external: require("@src/assets/images/lifeStyle/external.png"),
+      concavoSmall: require("@src/assets/images/lifeStyle/concavoSmall.png"),
+      conca: require("@src/assets/images/lifeStyle/conca.png"),
+      glow: require("@src/assets/images/lifeStyle/glow.png"),
+      glow_two: require("@src/assets/images/lifeStyle/glow_two.png"),
+      profile: require("@src/assets/images/lifeStyle/profile.png"),
+      tuki: require("@src/assets/images/lifeStyle/tuki.png"),
+      share: require("@src/assets/images/lifeStyle/share.png"),
+      repayTerms: require("@src/assets/images/lifeStyle/repayTerms.png"),
+      carbon: require("@src/assets/images/lifeStyle/carbon.png"),
+      installment: require("@src/assets/images/lifeStyle/installment.png"),
+      LoanBackground: require("@src/assets/images/lifeStyle/LoanBackground.png"),
+      mockup: require("@src/assets/images/lifeStyle/mockup.png"),
+    },
+    profile:{
+      avatar: require("@src/assets/images/profile/avatar.png"),
     },
   };
   

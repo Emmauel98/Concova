@@ -27,7 +27,7 @@ const SignInWith = () => {
 
           return (
             <View
-             className="bg-[#262626] mx-[5vw] p-5 rounded-full h-[7vh] w-[15vw]"
+             className={`bg-[#262626] mx-[5vw] flex-row justify-center items-center  rounded-full ${Platform.OS === 'android' ? ' h-[8vh] w-[15vw]' : 'p-5  h-[7vh] w-[15vw]'}`}
              key={index}>
               <Image source={data.image} />
             </View>

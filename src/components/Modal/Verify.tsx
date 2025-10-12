@@ -1,4 +1,11 @@
-import { View, Text, Modal, TouchableOpacity, Button, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  TouchableOpacity,
+  Button,
+  Alert,
+} from "react-native";
 import React, { useState } from "react";
 import useOnboardingContext from "@src/utils/Context";
 import VerificationCode from "../UserAuthentication/VerificationCode";
@@ -15,7 +22,7 @@ const VerifyModal = () => {
         <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.4)" }}>
           <View className=" flex-1 flex-row h-screen justify-center items-center">
             <View className=" bg-[#181818] rounded-2xl w-[92vw]">
-              <TouchableOpacity onPress={()=>setVerify(false)}>
+              <TouchableOpacity onPress={() => setVerify(false)}>
                 <Text className="text-right font-black text-[#ACADB9] text-[18px] p-[3vh]">
                   Close
                 </Text>
@@ -59,36 +66,39 @@ const CustomButton = ({
   BgColor: string;
   color: string;
 }) => {
+  const { setVerify } = useOnboardingContext();
+  const navigation =
+    useNavigation<NavigationProp<AuthenticationStackParamList>>();
 
-
-  const {  setVerify } = useOnboardingContext();
-  const navigation = useNavigation<NavigationProp<AuthenticationStackParamList>>();
-
-
-   const navigationHanler = ()=>{
+  const navigationHanler = () => {
     switch (title) {
-      case 'Verify':
-         setVerify(false);
-          navigation.navigate('dasboard');
+      case "Verify":
+        setVerify(false);
+        navigation.navigate("dasboard");
         break;
-      case 'Send Again':
-          Alert.alert('We send you a verifcation code');
+      case "Send Again":
+        Alert.alert("We send you a verifcation code");
         break;
       default:
         break;
     }
-   };
+  };
 
   return (
     <View
       className="flex-row justify-center items-center mx-[5vw] py-[1.5vh] rounded-xl mb-[2vh]"
       style={{ backgroundColor: BgColor }}
     >
-      <TouchableOpacity 
-      className="w-full" style={{ backgroundColor: BgColor }}
-      // onPress={()=> console.log("object")}
+      <TouchableOpacity
+        className="w-full"
+        style={{ backgroundColor: BgColor }}
+        // onPress={()=> console.log("object")}
+        onPress={navigationHanler}
       >
-        <Button title={title} color={color} onPress={navigationHanler} />
+        <Text className=" text-center font-bold" style={{ color }}>
+          {title}
+        </Text>
+        {/* <Button title={title} color={color} onPress={navigationHanler} /> */}
       </TouchableOpacity>
     </View>
   );

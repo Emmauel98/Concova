@@ -4,29 +4,39 @@
     "slug": "CONCAVO",
     "version": "1.0.0",
     "orientation": "portrait",
-    "entryPoint": "./src/App.tsx",
+    // "entryPoint": "./src/App.tsx",
+    // "main": "./src/App.tsx",
     "icon": "./src/assets/Subtract.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.olami.concavo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/Subtract.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.olami.concavo"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
     "extra": {
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "37775479-68c7-4825-8ff1-0d646d194630"
+        "projectId": "53594100-f098-41b1-9851-35455d503893"
       }
     },
     "runtimeVersion": {
@@ -42,7 +52,8 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
+      ],
+      "expo-build-properties"
     ]
   }
 }

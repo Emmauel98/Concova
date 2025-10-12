@@ -39,6 +39,7 @@ const OnboardScreen = () => {
         </View>
       </View>
     </SafeAreaView>
+
   );
 };
 
