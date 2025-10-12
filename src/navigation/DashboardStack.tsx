@@ -137,7 +137,7 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
                 >
                   <Image
                     source={images.home.fancylogo}
-                    className={`relative top-[-4vh] left-[1vw] ${Platform.OS === 'android' ? "w-[16.5vw] h-full" : "w-full h-full left-[-8vw]"}`}
+                    className={`relative top-[-4vh]  ${Platform.OS === 'android' ? "w-[16.5vw] h-full left-[1vw]" : "w-full h-full left-[-7.5vw]"}`}
                   />
                 </View>
               ) : (

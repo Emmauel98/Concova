@@ -57,17 +57,17 @@ export const LinkedBanksContainer = ({
     >
       <Image source={logo} className="my-[2vh] mx-[2vw] w-[10vw] h-[4.7vh]" />
       <CustomTextForAssets
-        type="title"
+        type="Small"
         text={bank}
-        className=" font-semibold text-[12.93px]"
+        className=" font-semibold text-[20rem]"
       />
       <Image source={graph} className="my-[2vh] mx-[2vw]" />
       <CustomTextForAssets
-        type="title"
+        type="Small"
         text={amount}
         className=" font-medium text-[13.9px]"
       />
-      <View className=" bg-[#4E4E4E] p-1 ml-2 right-[1vw]">
+      <View className=" p-1 ml-2 right-[1vw] rounded-full">
         <CustomTextForAssets
           type="Small"
           text={percentage}

@@ -2,12 +2,12 @@ import { View, Text, type TextProps } from "react-native";
 import React from "react";
 
 
-export type ThemedTextProps = TextProps & {type: 'title' | 'Small'; text: string;};
+export type ThemedTextProps = TextProps & {type?: 'title' | 'Small'; text: string;};
   
 
 export const CustomTextForAssets = ({type, text, style,}:ThemedTextProps)=>{
 
-    const size = type === 'title' ? 24.4 : 14 ;
+    const size = type === 'title' ? 22.4 : 14 ;
   
     return(
         <Text className=" text-[#FFFFFF]"

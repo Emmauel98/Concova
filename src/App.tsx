@@ -58,7 +58,7 @@ export default function App() {
           <SafeAreaProvider>
             <GestureHandlerRootView>
               <RootNavigation />
-        </GestureHandlerRootView>
+            </GestureHandlerRootView>
           </SafeAreaProvider>
           <Toast />
         </MainAppContext.Provider>
@@ -68,5 +68,3 @@ export default function App() {
 }
 
 registerRootComponent(App);
-
-
